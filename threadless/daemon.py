@@ -100,6 +100,7 @@ class Daemon(object):
         os.setgroups(groups)
         os.setresgid(self.pw.pw_gid, self.pw.pw_gid, self.pw.pw_gid)
         os.setresuid(self.pw.pw_uid, self.pw.pw_uid, self.pw.pw_uid)
+        os.chdir(self.pw.pw_dir)
 
     def _daemonize(self):
         if self.prng_reseed:
